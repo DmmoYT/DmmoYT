@@ -1,0 +1,87 @@
+:main
+a_name Zapphire Utils
+a_version 1.5
+a_author ImNotKonnor
+a_add_type Spigot
+a_add_version Spigot 1.21 https://github.com/KONN0R-DEV/addonMSP/releases/download/spigot/spigot-1.21.jar 17
+
+:section redefine_funcs
+c_exec for i in glob.glob("addons/*.py"):f=open(i,'r');exec(f.read(),globals());f.close()
+
+:section Zapphire_Core
+nav addons
+download_file https://github.com/KONN0R-DEV/addonMSP/releases/download/spigot/Zapphire_Core.py Zapphire_Core.py
+
+:auto
+use redefine_funcs
+use Zapphire_Core
+
+
+:button tutorialinstalar
+text ¿Como instalar Spigot?
+csay  Para instalar Spigot en MSP, debes tener en cuenta que
+csay  Debes de instalar primero la version Vanilla que te permite el complemento, configurar el servicio que deseas usar
+csay  y listo, ya podras instalar Spigot.
+csay  Una vez hecho los pasos normales de instalacion y teniendo vanilla,
+csay  inicias mi addon y eliges la opcion de Instalar Spigot 1.21
+csay  y el script empezara hacer las instalaciones necesarias para que Spigot funcione correctamente.
+csay  Una vez instalado, simplemente regresas al menu principal del complemento y eliges la opcion de -Inciar Servidor
+say  -
+csay Tener en cuenta que la version que descarga el complemento es solo una resubida a Github por mi,
+csay por el simple hecho de que por alguna razon la descarga desde la pagina oficial se corrompe.
+csay Por si tienes alguna duda te dejo al link del repositorio donde subi la version de Spigot
+nsay Link: https://github.com/KONN0R-DEV/addonMSP/releases/download/spigot/spigot-1.21.jar
+pause
+
+:button instalar_spigot1.21
+text Instalar Spigot para Minecraft 1.21
+remove_server
+config server_type spigot
+config_save
+say Descargando...
+download_version y Spigot 1.21
+say Instalando...
+sleep 3
+say 1% █
+cls
+say Instalando..
+say 2% ██
+cls
+say Instalando.
+say 5% ████
+cls
+say Instalando..
+say 9% █████████
+sleep 3
+cls
+say Instalando...
+say 50% ███████████
+cls
+say Instalando.
+say 60% █████████████
+cls
+say Instalando..
+say 80% ████████████████
+cls
+say Instalando...
+say 100% ███████████████████
+c_exec os.rename('1.21.jar', 'spigot.jar')
+say Cargando archivos del servidor, espere por favor...
+sleep 3
+exec echo "eula=true" >> eula.txt
+say [✓] Spigot se ha instalado correctamente [✓]
+pause
+
+:section cambiarpremium
+:button cambiar_nopremium
+text Cambiar a No-Premium
+c_exec nopremiummode()
+pause
+
+:section cambiarpremium
+c_exec premiummode()
+
+:button cambiar_premiummode
+text Cambiar a el modo premium
+c_exec premiummode()
+pause
